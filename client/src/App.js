@@ -3,10 +3,11 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Articles from "./pages/Articles";
 import NoMatch from "./pages/NoMatch";
 import {Nav, Footer} from "./components/Nav";
+import "./components/Nav/Nav.css";
 
 const App = () =>
 <Router>
-  <div>
+  <div className = 'phantom'>
 	<Nav />
 	<Switch>
 		<Route exact path="/" component={Articles} />

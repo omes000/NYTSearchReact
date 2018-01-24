@@ -5,4 +5,13 @@
 
 .footer{
 	margin-bottom: 0px;
+	position: sticky;
+	display: flex;
+    width: 100%;
+}
+
+.phantom{
+	display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }

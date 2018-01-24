@@ -50,7 +50,7 @@ class Articles extends Component {
 		web_url: articleInfo.web_url,
 		pub_date: articleInfo.pub_date,
 		multimedia: articleInfo.multimedia,
-  		snippet: articleInfo.snippet
+		snippet: articleInfo.snippet
 	  })
 		.then(res => {
 			this.loadSavedArticles();
@@ -74,97 +74,99 @@ class Articles extends Component {
 
 	render() {
 		return (
-			<Container>
-				<Row>
-					<Col size="md-12">
-						<Panel>
-							<PanelTitle>
-								<h3 className = 'panel-title'>Search Query</h3>
-							</PanelTitle>
-							<PanelBody>
-								<form>
-									<Input
-									value={this.state.search}
-									onChange={this.handleInputChange}
-									name="search"
-									placeholder="Search Term (required)"
-									/>
-									<Input
-									value={this.state.startYear}
-									onChange={this.handleInputChange}
-									name="startYear"
-									placeholder="Start Year (optional)"
-									/>
-									<Input
-									value={this.state.endYear}
-									onChange={this.handleInputChange}
-									name="endYear"
-									placeholder="End Year (optional)"
-									/>
-									<FormBtn
-									disabled={!(this.state.search)}
-									onClick={this.handleFormSubmit}
-									>
-									Submit Search
-									</FormBtn>
-								</form>
-							</PanelBody>
-						</Panel>
-		  			</Col>
-		  
-		  			<Col size="md-12 sm-12">
-						<Panel>
-							<PanelTitle>
-								<h3 className = "panel-title">Articles</h3>
-							</PanelTitle>
-							<PanelBody>
-								{this.state.articles.length ? (
-									<List>
-										{this.state.articles.map(article => (
-											<ListItem key={article._id}>
-												<Media>
-													<MediaLeft article = {article} />
-													<MediaBody article = {article} />
-												</Media>
-												<SaveBtn onClick={() => this.handleArticleSave(article)} />
-											</ListItem>
-										))}
-									</List>
-								) : (
-									<h3>No Results to Display</h3>
-								)}
-							</PanelBody>
-						</Panel>	
-		  			</Col>
-
-					<Col size="md-12 sm-12">
-						<Panel>
-							<PanelTitle>
-								<h3 className = "panel-title">Bookmarked Articles</h3>
-							</PanelTitle>
-							<PanelBody>
-								<Saved>
-									{this.state.savedArticles.length ? (
+			<div style={{flex: "1 0 auto", padding: "var( — space) var( — space) 0", width: "100%"}}>
+				<Container>
+					<Row>
+						<Col size="md-12">
+							<Panel>
+								<PanelTitle>
+									<h3 className = 'panel-title'>Search Query</h3>
+								</PanelTitle>
+								<PanelBody>
+									<form>
+										<Input
+										value={this.state.search}
+										onChange={this.handleInputChange}
+										name="search"
+										placeholder="Search Term (required)"
+										/>
+										<Input
+										value={this.state.startYear}
+										onChange={this.handleInputChange}
+										name="startYear"
+										placeholder="Start Year (optional)"
+										/>
+										<Input
+										value={this.state.endYear}
+										onChange={this.handleInputChange}
+										name="endYear"
+										placeholder="End Year (optional)"
+										/>
+										<FormBtn
+										disabled={!(this.state.search)}
+										onClick={this.handleFormSubmit}
+										>
+										Submit Search
+										</FormBtn>
+									</form>
+								</PanelBody>
+							</Panel>
+						</Col>
+			
+						<Col size="md-12 sm-12">
+							<Panel>
+								<PanelTitle>
+									<h3 className = "panel-title">Articles</h3>
+								</PanelTitle>
+								<PanelBody>
+									{this.state.articles.length ? (
 										<List>
-											{this.state.savedArticles.map(article => (
+											{this.state.articles.map(article => (
 												<ListItem key={article._id}>
 													<Media>
 														<MediaLeft article = {article} />
 														<MediaBody article = {article} />
 													</Media>
-													<DeleteBtn onClick={() => this.deleteArticle(article._id)} />
+													<SaveBtn onClick={() => this.handleArticleSave(article)} />
 												</ListItem>
 											))}
 										</List>
 									) : (
 										<h3>No Results to Display</h3>
 									)}
-								</Saved>
-							</PanelBody>
-						</Panel>
-					</Col>
-				</Row>
-	  		</Container>
+								</PanelBody>
+							</Panel>	
+						</Col>
+
+						<Col size="md-12 sm-12">
+							<Panel>
+								<PanelTitle>
+									<h3 className = "panel-title">Bookmarked Articles</h3>
+								</PanelTitle>
+								<PanelBody>
+									<Saved>
+										{this.state.savedArticles.length ? (
+											<List>
+												{this.state.savedArticles.map(article => (
+													<ListItem key={article._id}>
+														<Media>
+															<MediaLeft article = {article} />
+															<MediaBody article = {article} />
+														</Media>
+														<DeleteBtn onClick={() => this.deleteArticle(article._id)} />
+													</ListItem>
+												))}
+											</List>
+										) : (
+											<h3>No Results to Display</h3>
+										)}
+									</Saved>
+								</PanelBody>
+							</Panel>
+						</Col>
+					</Row>
+				</Container>
+			</div>
 		);
 	}
 }
